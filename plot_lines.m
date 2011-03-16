@@ -1,6 +1,6 @@
 function plot_lines(coords, inc)
   clf
-  hold on
+  hold on;
   ma = max(coords) + ones(1,2);
   mi = min(coords) - ones(1,2);
   axis([mi(1), ma(1), mi(2), ma(2)])
