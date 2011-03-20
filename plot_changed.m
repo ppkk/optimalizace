@@ -1,14 +1,15 @@
-function plot_changed(coords, inc, supports, u, stress, mag)
+function plot_changed(coords, inc, supports, u, stress, mag, max_stress)
   clf
   hold on;
   
-  palete = "cgrm";
+  palete = "cgrmm";
+  len = max(coords)(1)/4;
   for i=1:4
-    plot([0.8*(i-1), 0.8*i],[-0.5,-0.5], palete(i), 'linewidth', 5)
+    plot([len*(i-1), len*i],[-0.5,-0.5], palete(i), 'linewidth', 5)
   endfor
   
   stress = abs(stress);
-  max_stress = max(stress);
+#   max_stress = max(stress);
   
   ma = max(coords) + ones(1,2);
   mi = min(coords) - ones(1,2);

@@ -1,6 +1,6 @@
-function grad = calc_grad(positions, incidence, supports, F)
+function grad = calc_grad(positions, incidence, supports, F, changable)
   EPS = 0.000001;
-  num_vars = 2*(rows(positions) - supports);
+  num_vars = 2*(columns(changable));
   grad = zeros(num_vars, 1);
   A = create_a(positions, incidence, supports);
   C = create_c(positions, incidence, supports);
@@ -9,7 +9,7 @@ function grad = calc_grad(positions, incidence, supports, F)
 
   for i = 1 : num_vars
     new_positions = positions;
-    point = round(i/2);
+    point = changable(round(i/2));
     whichx = round((i+1)/2) - round(i/2) + 1; #jestli je to x nebo y
     
     new_positions(point, whichx) += EPS;
